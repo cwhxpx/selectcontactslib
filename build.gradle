@@ -1,0 +1,60 @@
+apply plugin: 'com.android.library'
+
+ext {
+    bintrayRepo = 'selectcontacts'
+    bintrayName = 'selectcontactslib'
+
+    publishedGroupId = 'co.devhub'
+    libraryName = 'selectcontactslib'
+    artifact = 'selectcontactslib'
+
+    libraryDescription = 'selectcontacts-android.'
+
+    siteUrl = 'https://github.com/ptyagicodecamp/webview-overlay'
+    gitUrl = 'https://github.com/cwhxpx/selectcontactslib.git'
+
+    libraryVersion = '0.0.1'
+
+    developerId = 'foxnick'
+    developerName = 'shuwei'
+    developerEmail = 'cwh.xpx@gmail.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.1"
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 21
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:26.+'
+    testCompile 'junit:junit:4.12'
+    compile 'co.devhub:retrievecontactslib:0.0.10'
+    compile files('libs/pinyin4j-2.5.0.jar')
+}
+
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
